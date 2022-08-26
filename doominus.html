@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+		body {
+  			background-image: url('backgrounds/back1.webp');
+		}
+		.center-screen {
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  text-align: center;
+		  min-height: 100vh;
+		}
+		#label, #text {
+    		display:inline; /* prevent elements from using full line block each on their own */
+		}
+		#text {
+    		line-height: 50px; /* set this to your image's height */
+    		vertical-align: top; /* center the text vertically along with the image */
+    		margin-left: 50px; /* optional margin */
+    		font-size: 40px;
+    		color: darkred;
+		}
+	</style>
+	<title>MinusRus - Doom Style</title>
+	<meta name="description" content="Our first page">
+	<meta name="keywords" content="html tutorial template">
+</head>
+<body>
+	<div class="center-screen">
+		<div class="label"><img src="labels/personnel.png"><p id="text">1050</p></div>
+		<div class="label"><img src="labels/tanks.png"><p id="text">117</p></div>
+		<div class="label"><img src="labels/acv.png"><p id="text">28</p></div>
+		<div class="label"><img src="labels/artillery.png"><p id="text">00</p></div>
+		<div class="label"><img src="labels/mlrs.png"><p id="text">XX</p></div>
+	</div>
+</body>
+
+</html>
