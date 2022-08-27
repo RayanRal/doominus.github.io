@@ -29,6 +29,14 @@
 	<meta name="keywords" content="html tutorial template">
 </head>
 <body>
+	{% assign all_records = site.data.numbers.records | map: "fields" %}
+
+	{% assign personnel = all_records | where:"Category","personnel" | first  %}
+	{% assign tanks = all_records | where:"Category","tanks" | first  %}
+
+	<p id="text">personnel {{ personnel }} </p>
+	<p id="text">tanks {{ tanks }} </p>
+
 	<div class="center-screen">
 		<div class="label"><img src="labels/personnel.png"><p id="text">1050</p></div>
 		<div class="label"><img src="labels/tanks.png"><p id="text">117</p></div>
