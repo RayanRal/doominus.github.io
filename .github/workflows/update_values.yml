@@ -1,0 +1,25 @@
+name: Update Values
+
+on:
+  schedule:
+    - cron:  '00 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run script to get data from airtable
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        run: |
+          ./scripts/fetch_from_airtable.sh
+
+      - name: Commit to the repo
+        run: |
+          git add .
+          git commit -am "Updated data"
+          git push
