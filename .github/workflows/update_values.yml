@@ -20,6 +20,8 @@ jobs:
 
       - name: Commit to the repo
         run: |
+          git config --global user.name "RayanRal"
+          git config --global user.email "rayanral@gmail.com"
           git add .
           git commit -am "Updated data"
           git push
