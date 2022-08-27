@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo pwd
 DATA_FILE=./_data/numbers.json
 API_KEY=$AIRTABLE_API_KEY  # fetch from github secrets in action
 BASE_ID=app7FmZOctdBwZwkZ
