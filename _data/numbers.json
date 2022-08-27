@@ -4,10 +4,50 @@
       "id": "rec3sXk3s4Udx832f",
       "createdTime": "2022-08-25T11:05:24.000Z",
       "fields": {
-        "Date": "2022-08-25",
+        "Date": "2022-08-27",
         "Delta": 3,
-        "Count": 28,
+        "Count": 1939,
         "Category": "tanks"
+      }
+    },
+    {
+      "id": "rec3sXk3s4Udx832f",
+      "createdTime": "2022-08-25T11:05:24.000Z",
+      "fields": {
+        "Date": "2022-08-27",
+        "Delta": 250,
+        "Count": 46500,
+        "Category": "personnel"
+      }
+    },
+    {
+      "id": "rec3sXk3s4Udx832f",
+      "createdTime": "2022-08-25T11:05:24.000Z",
+      "fields": {
+        "Date": "2022-08-27",
+        "Delta": 3,
+        "Count": 4254,
+        "Category": "acv"
+      }
+    },
+    {
+      "id": "rec3sXk3s4Udx832f",
+      "createdTime": "2022-08-25T11:05:24.000Z",
+      "fields": {
+        "Date": "2022-08-27",
+        "Delta": 5,
+        "Count": 1045,
+        "Category": "artillery"
+      }
+    },
+    {
+      "id": "rec3sXk3s4Udx832f",
+      "createdTime": "2022-08-25T11:05:24.000Z",
+      "fields": {
+        "Date": "2022-08-25",
+        "Delta": 2,
+        "Count": 274,
+        "Category": "mlrs"
       }
     }
   ]

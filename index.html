@@ -1,3 +1,7 @@
+---
+title: MinusRus - Doom Style
+---
+
 <!doctype html>
 <html>
 <head>
@@ -33,16 +37,16 @@
 
 	{% assign personnel = all_records | where:"Category","personnel" | first  %}
 	{% assign tanks = all_records | where:"Category","tanks" | first  %}
-
-	<p id="text">personnel {{ personnel }} </p>
-	<p id="text">tanks {{ tanks }} </p>
+	{% assign acv = all_records | where:"Category","acv" | first  %}
+	{% assign artillery = all_records | where:"Category","artillery" | first  %}
+	{% assign mlrs = all_records | where:"Category","mlrs" | first  %}
 
 	<div class="center-screen">
-		<div class="label"><img src="labels/personnel.png"><p id="text">1050</p></div>
-		<div class="label"><img src="labels/tanks.png"><p id="text">117</p></div>
-		<div class="label"><img src="labels/acv.png"><p id="text">28</p></div>
-		<div class="label"><img src="labels/artillery.png"><p id="text">00</p></div>
-		<div class="label"><img src="labels/mlrs.png"><p id="text">XX</p></div>
+		<div class="label"><img src="labels/personnel.png"><p id="text">{{ personnel.Count }}</p></div>
+		<div class="label"><img src="labels/tanks.png"><p id="text">{{ tanks.Count }}</p></div>
+		<div class="label"><img src="labels/acv.png"><p id="text">{{ acv.Count }}</p></div>
+		<div class="label"><img src="labels/artillery.png"><p id="text">{{ artillery.Count }}</p></div>
+		<div class="label"><img src="labels/mlrs.png"><p id="text">{{ mlrs.Count }}</p></div>
 	</div>
 </body>
 
