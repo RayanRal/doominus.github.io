@@ -18,3 +18,4 @@ DATA_JSON=$(curl -H "$AIRTABLE_HEADER" "$AIRTABLE_URL")
 
 # Save result to file
 echo "$DATA_JSON" | jq >>$DATA_FILE
+date >last_updated_date
