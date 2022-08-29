@@ -4,7 +4,14 @@ title: MinusRus - Doom Style
 
 <!doctype html>
 <html>
+<!-- Source of data: Ministry of Defense -->
+<!-- Data queried from https://russian-casualties.in.ua/ -->
+<!-- Doom text generated: https://c.eev.ee/doom-text-generator/ -->
+<!-- Background image source:  -->
 <head>
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
 	<style>
 		body {
   			background-image: url('backgrounds/back1.webp');
@@ -14,40 +21,103 @@ title: MinusRus - Doom Style
 		  flex-direction: column;
 		  justify-content: center;
 		  align-items: center;
-		  text-align: center;
 		  min-height: 100vh;
 		}
-		#label, #text {
-    		display:inline; /* prevent elements from using full line block each on their own */
+		.personnel {
+    		display:inline; 
+    		align-items: left;
+    		margin-left: 100px;
 		}
-		#text {
-    		line-height: 50px; /* set this to your image's height */
-    		vertical-align: top; /* center the text vertically along with the image */
-    		margin-left: 50px; /* optional margin */
-    		font-size: 40px;
-    		color: darkred;
+		.tanks, .acv, .artillery, .mlrs {
+			display:none;
+			align-items: left;
+			margin-left: 100px;
+		}
+		.numbers {
+    		display:inline;
+    		align-items: right;
+    		margin-left: 100px;
+    		margin-right: 100px;
 		}
 	</style>
 	<title>MinusRus - Doom Style</title>
 	<meta name="description" content="Our first page">
 	<meta name="keywords" content="html tutorial template">
 </head>
-<body>
+<body  onclick="showLabel()">
 	{% assign all_records = site.data.numbers.records | map: "fields" %}
 
-	{% assign personnel = all_records | where:"Category","personnel" | first  %}
-	{% assign tanks = all_records | where:"Category","tanks" | first  %}
-	{% assign acv = all_records | where:"Category","acv" | first  %}
-	{% assign artillery = all_records | where:"Category","artillery" | first  %}
-	{% assign mlrs = all_records | where:"Category","mlrs" | first  %}
+	{% assign personnel = all_records | where:"category","personnel" | first | map: "count" | string | remove: "[" | remove: "]" | split: ""  %}
+	{% assign tanks = all_records | where:"category","tanks" | first  | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
+	{% assign acv = all_records | where:"category","acv" | first  | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
+	{% assign artillery = all_records | where:"category","artillery" | first  | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
+	{% assign mlrs = all_records | where:"category","mlrs" | first | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
 
 	<div class="center-screen">
-		<div class="label"><img src="labels/personnel.png"><p id="text">{{ personnel.Count }}</p></div>
-		<div class="label"><img src="labels/tanks.png"><p id="text">{{ tanks.Count }}</p></div>
-		<div class="label"><img src="labels/acv.png"><p id="text">{{ acv.Count }}</p></div>
-		<div class="label"><img src="labels/artillery.png"><p id="text">{{ artillery.Count }}</p></div>
-		<div class="label"><img src="labels/mlrs.png"><p id="text">{{ mlrs.Count }}</p></div>
+		<div class="personnel">
+			<img src="labels/personnel.png">
+			<div class="numbers">
+				{% for number in personnel %}
+					<img src="labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="tanks">
+			<img src="labels/tanks.png">
+			<div class="numbers">
+				{% for number in tanks %}
+					<img src="labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="acv">
+			<img src="labels/acv.png">
+			<div class="numbers">
+				{% for number in acv %}
+					<img src="labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="artillery">
+			<img src="labels/artillery.png">
+			<div class="numbers">
+				{% for number in artillery %}
+					<img src="labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="mlrs">
+			<img src="labels/mlrs.png">
+			<div class="numbers">
+				{% for number in mlrs %}
+					<img src="labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
 	</div>
+
+	<script>
+		function showLabel() {
+		  var sound = new Audio("sounds/shotgun.mp3"); 
+		  var tanks = document.getElementsByClassName("tanks")[0];
+		  var acv = document.getElementsByClassName("acv")[0];
+		  var artillery = document.getElementsByClassName("artillery")[0];
+		  var mlrs = document.getElementsByClassName("mlrs")[0];
+		  if (tanks.style.display != "inline") {
+		    tanks.style.display = "inline";
+		    sound.play();
+		  } else if (acv.style.display != "inline") {
+		    acv.style.display = "inline";
+		    sound.play();
+		  } else if (artillery.style.display != "inline") {
+		    artillery.style.display = "inline";
+		    sound.play();
+		  } else if (mlrs.style.display != "inline") {
+		    mlrs.style.display = "inline";
+		    sound.play();
+		  }
+		}
+		</script>
 </body>
 
 </html>
