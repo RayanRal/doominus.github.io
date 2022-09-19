@@ -9,42 +9,17 @@ title: MinusRus - Doom Style
 <!-- Doom text generated: https://c.eev.ee/doom-text-generator/ -->
 <!-- Background image source:  -->
 <head>
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+	<link rel='stylesheet' type='text/css' href='main.css'>
 
-	<style>
-		body {
-  			background-image: url('backgrounds/back1.webp');
-		}
-		.center-screen {
-		  display: flex;
-		  flex-direction: column;
-		  justify-content: center;
-		  align-items: center;
-		  min-height: 100vh;
-		}
-		.personnel {
-    		display:inline; 
-    		align-items: left;
-    		margin-left: 100px;
-		}
-		.tanks, .acv, .artillery, .mlrs {
-			display:none;
-			align-items: left;
-			margin-left: 100px;
-		}
-		.numbers {
-    		display:inline;
-    		align-items: right;
-    		margin-left: 100px;
-    		margin-right: 100px;
-		}
-	</style>
 	<title>MinusRus - Doom Style</title>
 	<meta name="description" content="Our first page">
 	<meta name="keywords" content="html tutorial template">
 </head>
 <body  onclick="showLabel()">
+
 	{% assign all_records = site.data.numbers.records | map: "fields" %}
 
 	{% assign personnel = all_records | where:"category","personnel" | first | map: "count" | string | remove: "[" | remove: "]" | split: ""  %}
@@ -53,71 +28,105 @@ title: MinusRus - Doom Style
 	{% assign artillery = all_records | where:"category","artillery" | first  | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
 	{% assign mlrs = all_records | where:"category","mlrs" | first | map: "count" | string | remove: "[" | remove: "]" | split: "" %}
 
-	<div class="center-screen">
-		<div class="personnel">
-			<img src="labels/personnel.png">
-			<div class="numbers">
-				{% for number in personnel %}
-					<img src="labels/{{ number }}.png">
-				{% endfor %}
-			</div>
-		</div>
-		<div class="tanks">
-			<img src="labels/tanks.png">
-			<div class="numbers">
-				{% for number in tanks %}
-					<img src="labels/{{ number }}.png">
-				{% endfor %}
-			</div>
-		</div>
-		<div class="acv">
-			<img src="labels/acv.png">
-			<div class="numbers">
-				{% for number in acv %}
-					<img src="labels/{{ number }}.png">
-				{% endfor %}
-			</div>
-		</div>
-		<div class="artillery">
-			<img src="labels/artillery.png">
-			<div class="numbers">
-				{% for number in artillery %}
-					<img src="labels/{{ number }}.png">
-				{% endfor %}
-			</div>
-		</div>
-		<div class="mlrs">
-			<img src="labels/mlrs.png">
-			<div class="numbers">
-				{% for number in mlrs %}
-					<img src="labels/{{ number }}.png">
-				{% endfor %}
-			</div>
-		</div>
+	<div class="top-label">
+		<img src="assets/labels/russian_army.png">
+		<img src="assets/labels/losses.png">
 	</div>
+
+		<!-- Personnel -->
+		<div class="parent personnel">
+			<div class="left margin-right-auto">
+				<img src="assets/labels/personnel.png">
+			</div>
+
+			<div class="right">
+				{% for number in personnel %}
+					<img src="assets/labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Tanks -->
+		<div class="parent tanks">
+			<div class="left margin-right-auto">
+					<img src="assets/labels/tanks.png">
+			</div>
+
+			<div class="right">
+				{% for number in tanks %}
+					<img src="assets/labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- ACV -->
+
+		<div class="parent acv">
+			<div class="left margin-right-auto">
+				<img src="assets/labels/acv.png">
+			</div>
+			
+			<div class="right">
+				{% for number in acv %}
+					<img src="assets/labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- Artillery -->
+
+		<div class="parent artillery">
+			<div class="left margin-right-auto">
+				<img src="assets/labels/artillery.png">
+			</div>
+
+			<div class="right">
+				{% for number in artillery %}
+					<img src="assets/labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
+
+		
+
+		<!-- MLRS -->
+
+		<div class="parent mlrs">
+			<div class="left margin-right-auto">
+				<img src="assets/labels/mlrs.png">
+			</div>
+			
+			<div class="right">
+				{% for number in mlrs %}
+					<img src="assets/labels/{{ number }}.png">
+				{% endfor %}
+			</div>
+		</div>
 
 	<script>
 		function showLabel() {
-		  var sound = new Audio("sounds/shotgun.mp3"); 
-		  var tanks = document.getElementsByClassName("tanks")[0];
-		  var acv = document.getElementsByClassName("acv")[0];
-		  var artillery = document.getElementsByClassName("artillery")[0];
-		  var mlrs = document.getElementsByClassName("mlrs")[0];
-		  if (tanks.style.display != "inline") {
-		    tanks.style.display = "inline";
-		    sound.play();
-		  } else if (acv.style.display != "inline") {
-		    acv.style.display = "inline";
-		    sound.play();
-		  } else if (artillery.style.display != "inline") {
-		    artillery.style.display = "inline";
-		    sound.play();
-		  } else if (mlrs.style.display != "inline") {
-		    mlrs.style.display = "inline";
-		    sound.play();
-		  }
+		  var sound = new Audio("assets/sounds/shotgun.mp3"); 
+		  sound.play();
+		  // var tanks = document.getElementsByClassName("tanks")[0];
+		  // var acv = document.getElementsByClassName("acv")[0];
+		  // var artillery = document.getElementsByClassName("artillery")[0];
+		  // var mlrs = document.getElementsByClassName("mlrs")[0];
+		  // if (tanks.style.display != "flex") {
+		  //   tanks.style.display = "flex";
+		  //   sound.play();
+		  // } else if (acv.style.display != "flex") {
+		  //   acv.style.display = "flex";
+		  //   sound.play();
+		  // } else if (artillery.style.display != "flex") {
+		  //   artillery.style.display = "flex";
+		  //   sound.play();
+		  // } else if (mlrs.style.display != "flex") {
+		  //   mlrs.style.display = "flex";
+		  //   sound.play();
+		  // }
 		}
-		</script>
+	</script>
+
 </body>
 
 </html>
