@@ -48,7 +48,7 @@ def rollup_data(data):
 
 
 def main():
-    URL = "https://russian-casualties.in.ua/api/v1/data/json/daily"
+    URL = "<url>"
     data = fetch_data(URL)
     rollup = rollup_data(data)
     save_to_db(rollup)
@@ -75,9 +75,9 @@ def rollup_to_records(rollup: Losses) -> List[Dict[str, Any]]:
 
 def save_to_db(rollup: Losses) -> List[Dict[Any, Any]]:
     print(f"Will save to DB: {rollup}")
-    api_key = 'keya5dgTYMycdSksF'
+    api_key = '<api_key>'
 
-    table = Table(api_key, 'app7FmZOctdBwZwkZ', 'losses')
+    table = Table(api_key, '<table_id>', 'losses')
     records = rollup_to_records(rollup)
     return table.batch_create(records, typecast=True)
 
